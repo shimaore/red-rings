@@ -4,7 +4,7 @@
   "description": "CCNQ4 event data for streaming",
   "main": "index.js",
   "scripts": {
-    "prepare": "coffee -c *.coffee.md",
+    "prepublishOnly": "npm install --only=dev && coffee -c *.coffee.md",
     "pretest": "npm run prepare && coffee -c test/*.coffee.md",
     "test": "mocha"
   },
