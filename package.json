@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm install --only=dev && coffee -c *.coffee.md",
-    "pretest": "npm run prepare && coffee -c test/*.coffee.md",
+    "pretest": "npm install && npm run prepublishOnly && coffee -c test/*.coffee.md",
     "test": "mocha"
   },
   "repository": {
