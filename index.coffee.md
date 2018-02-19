@@ -8,18 +8,18 @@ Red Ring
 A NOTIFY message is formatted based on the rows of a CouchDB query.
 
       notify: (key,id,value,doc) ->
-        assert key?
+        assert is_string key
         assert is_string id
 
         @send {op:NOTIFY,key,id,value,doc}
 
       subscribe: (key) ->
-        assert key?
+        assert is_string key
 
         @send {op:SUBSCRIBE,key}
 
       unsubscribe: (key) ->
-        assert key?
+        assert is_string key
 
         @send {op:UNSUBSCRIBE,key}
 
@@ -53,9 +53,31 @@ A NOTIFY message is formatted based on the rows of a CouchDB query.
           @unsubscribe key
           most.empty()
 
+Red Ring with subscription from a Stream
+----------------------------------------
+
+    class RedRingFromStream extends RedRing
+
+      constructor: (source) ->
+        super()
+        @source = source
+
+      source_of: (a_key) -> @source.filter ({key}) -> key is a_key
+
+Red Ring with subscription from an EventEmitter
+-----------------------------------------------
+
+    class RedRingFromEvents extends RedRing
+
+      constructor: (events) ->
+        super()
+        @events = events
+
+      source_of: (key) -> most.fromEvent key, @events
+
     assert = require 'assert'
     is_string = (x) -> x? and typeof x is 'string' and x.length > 0
     {NOTIFY,UPDATE,SUBSCRIBE,UNSUBSCRIBE} = require './operations'
     most = require 'most'
 
-    module.exports = {RedRing}
+    module.exports = {RedRing,RedRingFromStream,RedRingFromEvents}

@@ -80,7 +80,6 @@
         v.receive('key:').drain()
         return
 
-      ###
       it 'should create from stream', (done) ->
         {RedRingFromStream} = require '..'
         {UNSUBSCRIBE} = require '../operations'
@@ -108,4 +107,4 @@
         ev.emit 'key:', {}
         ev.emit 'end', 'yo'
         return
-      ###
+
