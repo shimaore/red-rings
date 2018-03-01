@@ -1,6 +1,6 @@
 {
   "name": "red-rings",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CCNQ4 event data for streaming",
   "main": "index.js",
   "scripts": {
