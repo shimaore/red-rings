@@ -53,7 +53,7 @@ A NOTIFY message is formatted based on the rows of a CouchDB query.
           @unsubscribe key
           most.empty()
 
-    assert = require 'assert'
+    assert = require 'minimalistic-assert'
     is_string = (x) -> x? and typeof x is 'string' and x.length > 0
     {NOTIFY,UPDATE,SUBSCRIBE,UNSUBSCRIBE} = require './operations'
     most = require 'most'
