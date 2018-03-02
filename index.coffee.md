@@ -28,7 +28,7 @@ A NOTIFY message is formatted based on the rows of a CouchDB query.
         assert not doc._rev?
         assert not doc._deleted
 
-        @send {op:UPDATE,doc}
+        @send {op:UPDATE,id:doc._id,doc}
 
       update: (id,rev,doc,operations) ->
         assert is_string id

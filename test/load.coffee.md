@@ -54,6 +54,7 @@
         v = new RedRing()
         v.send = (msg) ->
           msg.should.have.property 'op', UPDATE
+          msg.should.have.property 'id', 'id:'
           done()
 
         v.create _id:'id:'
