@@ -47,6 +47,9 @@ A NOTIFY message is formatted based on the rows of a CouchDB query.
 
         @send {op: UPDATE,id,rev,deleted:true}
 
+On a "client", the `key` is really going to be a key used to subscribe to NOTIFY events.
+On a backend server, the `key` is going to be a pattern used to receive SUBSCRIBE, UPDATE, UNSUBSCRIBE messages, and the `subscribe`/`unsubscribe` methods should be translated into the "backend"'s matching operations. (But maybe this should be a totally different method altogether.)
+
       # source_of: (key) -> most Stream
 
       receive: (key,limit = most.never()) ->
