@@ -33,7 +33,7 @@ A NOTIFY message is formatted based on the rows of a CouchDB query.
       update: (id,rev,doc,operations) ->
         assert is_string id
         assert is_string rev
-        assert doc? or operations?
+        assert doc? or operations?.length > 0
 
         msg = {op:UPDATE,id,rev}
         msg.doc = doc if doc?
